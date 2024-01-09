@@ -15,29 +15,29 @@ If the user and hostname are the same but you must user a different SSH key:
 
 1. Set up the `~/.ssh/config` file as follows
 
-```bash
-Host github-as-client1
-        HostName github.com
-        User git
-        IdentityFile ~/.ssh/id_ed25519.client1
-        IdentitiesOnly yes
+    ```bash
+    Host github-as-client1
+            HostName github.com
+            User git
+            IdentityFile ~/.ssh/id_ed25519.client1
+            IdentitiesOnly yes
 
-Host github-as-client2
-        HostName github.com
-        User git
-        IdentityFile ~/.ssh/id_ed25519.client2
-        IdentitiesOnly yes
-```
+    Host github-as-client2
+            HostName github.com
+            User git
+            IdentityFile ~/.ssh/id_ed25519.client2
+            IdentitiesOnly yes
+    ```
 
 2. Instead of the real hostname, use the following in your `git remote`
 
-```bash
-# client 1's repo
-git remote add origin git@github-as-client1:your-repo.git
+    ```bash
+    # client 1's repo
+    git remote add origin git@github-as-client1:your-repo.git
 
-# client 2's repo
-git remote add origin git@github-as-client2:your-repo.git
-```
+    # client 2's repo
+    git remote add origin git@github-as-client2:your-repo.git
+    ```
 
 #### Resources
 
