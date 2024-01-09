@@ -10,6 +10,7 @@ from api_testing import (
     API,
     API_KEY,
 )
+import vcr
 
 
 @pytest.fixture()
@@ -54,4 +55,10 @@ def test_retrieve_weather_using_adapter(
         return fake_weather_info
 
     weather_info = retrieve_weather_with_adapter(city="London", adapter=fake_adapter)
+    assert weather_info == WeatherInfo.from_dict(fake_weather_info)
+
+
+@pytest.mark.vcr()
+def test_retrieve_weather_using_vcr(fake_weather_info):
+    weather_info = retrieve_weather(city="London")
     assert weather_info == WeatherInfo.from_dict(fake_weather_info)
