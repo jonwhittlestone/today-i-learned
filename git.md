@@ -9,7 +9,7 @@ Today I learnt ...
 >
 > As a consultant with two different clients, and two different GitHub users, with their own ssh keys, how can we `git push` ?
 
-## Recipe
+### Recipe
 
 If the user and hostname are the same but you must user a different SSH key:
 
