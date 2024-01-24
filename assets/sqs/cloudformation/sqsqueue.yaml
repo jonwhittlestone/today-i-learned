@@ -1,0 +1,38 @@
+
+Description: SQS queue
+
+# Resources
+# =============================================================================
+Resources:
+
+  # Queue
+  # ---------------------------------------------------------------------------
+  Queue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: til-sqs-example
+      # RedrivePolicy:
+      #   deadLetterTargetArn: !GetAtt 'DeadLetterQueue.Arn'
+      #   maxReceiveCount: 3
+      VisibilityTimeout: 600
+      MessageRetentionPeriod: 1209600 # 14 days in seconds
+
+# Outputs
+# =============================================================================
+Outputs:
+
+  QueueArn:
+    Description: The ARN of the queue
+    Value: !GetAtt Queue.Arn
+    Export:
+      Name: !Sub "${AWS::StackName}:QueueArn"
+  QueueName:
+    Description: The name of the queue
+    Value: !GetAtt Queue.QueueName
+    Export:
+      Name: !Sub "${AWS::StackName}:QueueName"
+  QueueUrl:
+    Description: The URL of the queue
+    Value: !Ref Queue
+    Export:
+      Name: !Sub "${AWS::StackName}:QueueUrl"

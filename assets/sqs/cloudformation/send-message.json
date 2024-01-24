@@ -1,0 +1,14 @@
+{
+  "City": {
+    "DataType": "String",
+    "StringValue": "London"
+  },
+  "Greeting": {
+    "DataType": "Binary",
+    "BinaryValue": "Good day to you!"
+  },
+  "Population": {
+    "DataType": "Number",
+    "StringValue": "8250800"
+  }
+}
