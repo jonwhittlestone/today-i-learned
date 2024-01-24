@@ -96,10 +96,10 @@ Today I learnt ...
         {"headers":{"Content-Type":"application/json"},"statusCode":200,"body":"{\"success\":true}"}%    
         ```
     </details>
-
+    <br>
 5. Iterate accordingly.
 
-Modify your code, rezip, update the function code and run it
+    Modify your code, rezip, update the function code and run it
 
     <details>
         <summary>Expand for code</summary>
@@ -116,6 +116,7 @@ Modify your code, rezip, update the function code and run it
         {"headers":{"Content-Type":"application/json"},"statusCode":200,"body":"{\"success\":true}"}%    
         ```
     </details>
+    <br>
 
 6. Remove role and lambda when you've finished.
 
