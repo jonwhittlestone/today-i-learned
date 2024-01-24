@@ -6,6 +6,7 @@ Home
     * [aws-lambda](aws/aws-lambda.md)
     * [cloudformation](aws/cloudformation.md)
     * [s3](aws/s3.md)
+    * [sqs](aws/sqs.md)
 * [git](git.md)
 * [ipdb](ipdb.md)
 * pytest

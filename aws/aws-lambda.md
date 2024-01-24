@@ -11,7 +11,7 @@ Today I learnt ...
 - `aws-cli` 
 	- https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html
 
-- An SQS queue
+- An [sqs.md](SQS queue)
 
 ### Recipe
 
@@ -40,15 +40,15 @@ Today I learnt ...
     Add this file to a zip and run `aws lambda create-function` populating the ARN to the role with your AWS account number.
 
     <details>
-        <summary>Expand for code</summary>
+    <summary>Expand for code</summary>
 
-        ```bash
-        cd assets/aws-lambda/start/
-        zip -r9 lambda.zip index.js package.json;
+    ```bash
+    cd assets/aws-lambda/start/
+    zip -r9 lambda.zip index.js package.json;
 
-        aws lambda create-function --function-name til-lambda-example --runtime nodejs20.x --zip-file fileb://lambda.zip --handler index.handler --role "arn:aws:iam::YOUR_ACCOUNT_NUMBER:role/til-lambda-example-role"
+    aws lambda create-function --function-name til-lambda-example --runtime nodejs20.x --zip-file fileb://lambda.zip --handler index.handler --role "arn:aws:iam::YOUR_ACCOUNT_NUMBER:role/til-lambda-example-role"
 
-        ```
+    ```
     </details>
 
     <br>
@@ -60,15 +60,15 @@ Today I learnt ...
     After running the code, look in `response.json`
 
     <details>
-        <summary>Expand for code</summary>
+    <summary>Expand for code</summary>
 
-        ```bash
-        aws lambda invoke --function-name til-lambda-example --payload file://event.json response.json;
+    ```bash
+    aws lambda invoke --function-name til-lambda-example --payload file://event.json response.json;
 
-        cat response.json
-        {"headers":{"Content-Type":"application/json"},"statusCode":200,"body":"{\"success\":true}"}%    
+    cat response.json
+    {"headers":{"Content-Type":"application/json"},"statusCode":200,"body":"{\"success\":true}"}%    
 
-        ```
+    ```
     </details>
 
     <br>
@@ -81,20 +81,20 @@ Today I learnt ...
     In the script's directory, install packages, create a new zip, and update the function code.
 
     <details>
-        <summary>Expand for code</summary>
+    <summary>Expand for code</summary>
 
-        ```bash
-        cd ../packages
-        npm install
-        
-        zip -r9 lambdapackages.zip .
-        aws lambda update-function-code --function-name til-lambda-example --zip-file fileb://lambdapackages.zip
+    ```bash
+    cd ../packages
+    npm install
+    
+    zip -r9 lambdapackages.zip .
+    aws lambda update-function-code --function-name til-lambda-example --zip-file fileb://lambdapackages.zip
 
-        # Invoke lambdapackages remotely
-        aws lambda invoke --function-name til-lambda-example --payload file://event.json response.json
-        cat response.json
-        {"headers":{"Content-Type":"application/json"},"statusCode":200,"body":"{\"success\":true}"}%    
-        ```
+    # Invoke lambdapackages remotely
+    aws lambda invoke --function-name til-lambda-example --payload file://event.json response.json
+    cat response.json
+    {"headers":{"Content-Type":"application/json"},"statusCode":200,"body":"{\"success\":true}"}%    
+    ```
     </details>
     <br>
 5. Iterate accordingly.
@@ -102,19 +102,19 @@ Today I learnt ...
     Modify your code, rezip, update the function code and run it
 
     <details>
-        <summary>Expand for code</summary>
+    <summary>Expand for code</summary>
 
-        ```bash
-        rm -rf lambdapackages.zip; 
+    ```bash
+    rm -rf lambdapackages.zip; 
 
-        zip -r9 lambdapackages.zip .
-        aws lambda update-function-code --function-name til-lambda-example --zip-file fileb://lambdapackages.zip
+    zip -r9 lambdapackages.zip .
+    aws lambda update-function-code --function-name til-lambda-example --zip-file fileb://lambdapackages.zip
 
 
-        aws lambda invoke --function-name til-lambda-example --payload file://event.json response.json
-        cat response.json
-        {"headers":{"Content-Type":"application/json"},"statusCode":200,"body":"{\"success\":true}"}%    
-        ```
+    aws lambda invoke --function-name til-lambda-example --payload file://event.json response.json
+    cat response.json
+    {"headers":{"Content-Type":"application/json"},"statusCode":200,"body":"{\"success\":true}"}%    
+    ```
     </details>
     <br>
 
@@ -135,3 +135,11 @@ Today I learnt ...
 - https://bobbyhadz.com/blog/aws-cli-create-lambda-function
 - https://awscli.amazonaws.com/v2/documentation/api/latest/reference/lambda/index.html
 - https://docs.aws.amazon.com/lambda/latest/dg/lambda-nodejs.html
+
+- Update environment variables
+    - https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html
+    - https://awscli.amazonaws.com/v2/documentation/api/latest/reference/lambda/update-function-configuration.html
+    - 
+        ```bash
+        aws lambda update-function-configuration --function-name til-lambda-example --environment "Variables={JW_AWS_ACCESS_KEY_ID=XXX,JW_AWS_SECRET_ACCESS_KEY=YYY}"
+        ```
